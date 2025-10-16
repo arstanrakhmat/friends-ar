@@ -90,7 +90,7 @@ jobs:
 #          exportDefaultCredentials: true
 
       - name: Run instrumentation test in Firebase Test Lab
-        run: gcloud firebase test android run --type instrumentation --app /home/runner/work/friends/friends/app-debug.apk --test /home/runner/work/friends/friends/app-debug-androidTest.apk --device model=shiba,version=35
+        run: gcloud firebase test android run --type instrumentation --app app-debug/app-debug.apk --test app-debug-androidTest/app-debug-androidTest.apk --device model=shiba,version=35
 
   distribute:
     name: Distribute app bundle to Play Store
