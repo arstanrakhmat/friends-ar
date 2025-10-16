@@ -76,15 +76,21 @@ jobs:
         with:
           name: app-debug-androidTest
 
+      - id: Auth
+        uses: google-github-actions/auth@v2
+        with:
+            project_id: ${{ secrets.FRIENDS_PROJECT_ID }}
+            credentials_json: ${{ secrets.FRIENDS_FIREBASE_TEST_LAB_AUTH }}
+
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
-        with:
-          project_id: ${{ secrets.FRIENDS_PROJECT_ID_FIREBASE }}
-          service_account_key: ${{ secrets.FRIENDS_FIREBASE_TEST_LAB_AUTH }}
-          exportDefaultCredentials: true
+#        with:
+#          project_id: ${{ secrets.FRIENDS_PROJECT_ID_FIREBASE }}
+#          service_account_key: ${{ secrets.FRIENDS_FIREBASE_TEST_LAB_AUTH }}
+#          exportDefaultCredentials: true
 
       - name: Run instrumentation test in Firebase Test Lab
-        run: gcloud firebase test android run --type instrumentation --app app-debug/app-debug.apk --test app-debug-androidTest.apk --device model=redfin,version=34
+        run: gcloud firebase test android run --type instrumentation --app /home/runner/work/friends/friends/app-debug.apk --test /home/runner/work/friends/friends/app-debug-androidTest.apk --device model=shiba,version=35
 
   distribute:
     name: Distribute app bundle to Play Store
