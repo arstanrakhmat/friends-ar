@@ -80,7 +80,7 @@ jobs:
         uses: google-github-actions/setup-gcloud@master
         with:
           project_id: ${{ secrets.FRIENDS_PROJECT_ID_FIREBASE }}
-          service_account_key: ${{ secretes.FRIENDS_FIREBASE_TEST_LAB_AUTH }}
+          service_account_key: ${{ secrets.FRIENDS_FIREBASE_TEST_LAB_AUTH }}
           exportDefaultCredentials: true
 
       - name: Run instrumentation test in Firebase Test Lab
